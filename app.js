@@ -26,6 +26,26 @@
   let currentFrame = 0;
   let isReady = false;
 
+  // Skip intro animation & show main content directly
+  function skipIntroAnimation() {
+    isReady = true;
+    if (loadingScreen) {
+      loadingScreen.style.opacity = '0';
+      setTimeout(() => { loadingScreen.style.display = 'none'; }, 500);
+    }
+    if (scrollTrack) scrollTrack.style.display = 'none';
+    if (bgVideoContainer) bgVideoContainer.classList.add('active');
+    if (navbar) navbar.classList.add('visible');
+  }
+
+  // Failsafe: if loading takes more than 12 seconds, skip animation
+  const loadingTimeout = setTimeout(() => {
+    if (!isReady) {
+      console.warn('Frame loading timed out — skipping intro animation.');
+      skipIntroAnimation();
+    }
+  }, 12000);
+
   // Robust video setup & continuous looping
   if (bgVideo) {
     bgVideo.muted = true;
@@ -50,7 +70,8 @@
   // 1. Preload Animation Frames
   function initFrames() {
     if (!window.FRAMES || !Array.isArray(window.FRAMES) || window.FRAMES.length === 0) {
-      if (loadingText) loadingText.textContent = 'Failed to load frame data.';
+      console.warn('FRAMES data missing — skipping intro animation.');
+      skipIntroAnimation();
       return;
     }
 
@@ -79,6 +100,7 @@
   }
 
   function onAllLoaded() {
+    clearTimeout(loadingTimeout);
     isReady = true;
     if (loadingScreen) {
       loadingScreen.style.opacity = '0';

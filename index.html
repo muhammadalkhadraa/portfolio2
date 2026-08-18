@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Muhammad Wael AlKhadraa | IT Specialist & .NET Developer Portfolio</title>
+  <meta name="description"
+    content="Portfolio of Muhammad Wael AlKhadraa - IT Specialist, IT Support Engineer, and .NET Developer specializing in enterprise IT support, Windows administration, network security, Sophos firewall, .NET Core, Angular, and n8n/Power Automate workflows.">
+  <meta name="keywords"
+    content="Muhammad Wael AlKhadraa, IT Specialist, IT Support Engineer, .NET Developer, Angular, C#, Sophos Firewall, Power Automate, n8n Automation, Sadat Academy">
+  <link rel="stylesheet" href="styles.css">
+  <!-- FontAwesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+  <!-- Loading Screen -->
+  <div class="loading-screen" id="loadingScreen">
+    <div class="spinner"></div>
+    <div style="color: var(--text-muted); font-size: 14px; font-weight: 500;" id="loadingText">Loading interactive
+      experience…</div>
+  </div>
+
+  <!-- Scroll-Driven Laptop Animation Intro Stage (Clean, no text overlay) -->
+  <div class="scroll-track" id="scrollTrack">
+    <div class="sticky-stage" id="stage">
+      <canvas id="canvas" width="1920" height="1080"></canvas>
+
+      <!-- Scroll Hint -->
+      <div class="scroll-hint" id="scrollHint">
+        <span>Scroll to open & explore</span>
+        <i class="fa-solid fa-chevron-down"></i>
+      </div>
+
+      <!-- Progress Runway Bar -->
+      <div class="progress-container">
+        <div class="progress-bar-fill" id="progressBar"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fixed Background Video (Binary Numbers Cascading in Void) -->
+  <div class="bg-video-container" id="bgVideoContainer">
+    <video class="bg-video" id="bgVideo" autoplay loop muted playsinline preload="auto">
+      <source src="Binary_numbers_cascading_in_void_202608161248.mp4" type="video/mp4">
+      <source src="public/Binary_numbers_cascading_in_void_202608161248.mp4" type="video/mp4">
+    </video>
+    <div class="bg-video-overlay"></div>
+  </div>
+
+  <!-- Sticky Glass Navbar (Appears after intro) -->
+  <nav class="navbar" id="navbar">
+    <a href="#" class="nav-brand">
+      <i class="fa-solid fa-terminal" style="color: var(--accent-cyan);"></i>
+      Muhammad <span>AlKhadraa</span>
+    </a>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#hero-header" class="nav-link">Home</a></li>
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#experience" class="nav-link">Experience</a></li>
+      <li><a href="#skills" class="nav-link">Skills</a></li>
+      <li><a href="#spotlight" class="nav-link">Automations</a></li>
+      <li><a href="#terminal" class="nav-link">CLI Terminal</a></li>
+      <li><a href="#education" class="nav-link">Education</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <button class="btn-secondary" onclick="copyText('alkhadraam@gmail.com', 'Email')">
+        <i class="fa-regular fa-copy"></i> Email
+      </button>
+      <a href="mailto:alkhadraam@gmail.com" class="btn-primary">
+        <i class="fa-solid fa-paper-plane"></i> Contact Me
+      </a>
+    </div>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </nav>
+
+  <!-- Main Website Body Content (Appears overlaying binary video background after intro) -->
+  <main class="main-content">
+
+    <!-- Hero Header Section -->
+    <section class="section" id="hero-header">
+      <div class="glass-card hero-header-card" style="text-align: center; padding: 48px 32px;">
+        <div class="hero-badge" style="margin: 0 auto 20px;">
+          <div class="pulse-dot"></div>
+          IT Specialist | IT Support Engineer | .NET Developer
+        </div>
+        <h1
+          style="font-size: clamp(34px, 6vw, 60px); font-weight: 800; line-height: 1.15; margin-bottom: 16px; background: linear-gradient(135deg, #ffffff 30%, #94a3b8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+          Muhammad Wael AlKhadraa
+        </h1>
+        <p
+          style="font-size: clamp(16px, 2.5vw, 22px); color: var(--text-muted); font-weight: 400; margin-bottom: 28px;">
+          Enterprise IT Infrastructure, Network Security & Full-Stack .NET Solutions
+        </p>
+
+        <div class="tech-pill-row" style="margin-bottom: 32px;">
+          <span class="tech-pill"><i class="fa-brands fa-windows" style="color: var(--accent-cyan);"></i> Windows
+            Admin</span>
+          <span class="tech-pill"><i class="fa-solid fa-shield-halved" style="color: var(--accent-amber);"></i> Sophos
+            Firewall</span>
+          <span class="tech-pill"><i class="fa-solid fa-code" style="color: var(--accent-blue);"></i> .NET Core &
+            Angular</span>
+          <span class="tech-pill"><i class="fa-solid fa-robot" style="color: var(--accent-emerald);"></i> n8n & Power
+            Automate</span>
+        </div>
+
+        <div class="contact-quick-list" style="justify-content: center;">
+          <a href="tel:01005421228" class="contact-chip">
+            <i class="fa-solid fa-phone" style="color: var(--accent-cyan);"></i> 01005421228
+          </a>
+          <a href="mailto:alkhadraam@gmail.com" class="contact-chip">
+            <i class="fa-solid fa-envelope" style="color: var(--accent-blue);"></i> alkhadraam@gmail.com
+          </a>
+          <div class="contact-chip">
+            <i class="fa-solid fa-location-dot" style="color: var(--accent-emerald);"></i> Cairo, Egypt
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About / Overview Section -->
+    <section class="section" id="about">
+      <div class="glass-card hero-profile-card">
+        <div class="profile-info">
+          <div class="section-tag">Professional Summary</div>
+          <h2 style="font-size: 28px; margin-bottom: 12px;">Enterprise IT & Software Engineering Expertise</h2>
+          <div class="profile-titles" style="margin-bottom: 16px;">
+            IT Specialist &nbsp;|&nbsp; IT Support Engineer &nbsp;|&nbsp; .NET Developer
+          </div>
+          <p class="profile-summary">
+            IT Specialist with hands-on experience supporting enterprise IT environments, troubleshooting hardware and
+            software issues, maintaining workstations, managing IT infrastructure, and providing technical support to
+            employees. Experienced in Windows administration, hardware maintenance, network troubleshooting, firewall
+            management, software installation, and user support.
+          </p>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-box">
+            <div class="stat-number">2+</div>
+            <div class="stat-label">Years Enterprise Experience</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Payroll Email Automation</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">14+</div>
+            <div class="stat-label">Core IT & Dev Competencies</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Professional Experience Section -->
+    <section class="section" id="experience">
+      <div class="section-header">
+        <div class="section-tag">Career Journey</div>
+        <h2 class="section-title">Professional Experience</h2>
+      </div>
+
+      <div class="timeline">
+
+        <!-- Experience 1: Kazareen Textile Company -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="glass-card">
+            <div class="exp-card-header">
+              <div>
+                <div class="exp-role-title">IT Specialist | Help Desk Engineer | Web Developer (.NET & Angular)</div>
+                <div class="exp-company"><i class="fa-solid fa-building"></i> Kazareen Textile Company (KTC)</div>
+              </div>
+              <span class="exp-period">2025 – Present</span>
+            </div>
+
+            <ul class="exp-bullets">
+              <li>Provide daily IT support for employees, troubleshooting hardware, software, operating system, and
+                network-related issues.</li>
+              <li>Install, configure, maintain, and troubleshoot Windows systems on desktops and laptops.</li>
+              <li>Perform hardware diagnosis, repair, and maintenance for PCs, laptops, printers, scanners, and
+                peripherals.</li>
+              <li>Support Microsoft Office applications and enterprise business systems.</li>
+              <li>Troubleshoot network connectivity, IP configuration, MAC addresses, and endpoint issues.</li>
+              <li>Manage Sophos firewall solutions and enforce organizational security practices.</li>
+              <li>Maintain IT inventory and perform hardware/software upgrades when required.</li>
+              <li>Develop internal applications using .NET, Angular, SQL Server, PostgreSQL, and Supabase.</li>
+              <li>Use Git/GitHub for team collaboration and source control management.</li>
+              <li>Create automation workflows using Microsoft Power Automate and n8n, including automated payroll email
+                distribution.</li>
+            </ul>
+
+            <div class="tech-tags">
+              <span class="tag">Windows Admin</span>
+              <span class="tag">Sophos Firewall</span>
+              <span class="tag">TCP/IP & IP Mgmt</span>
+              <span class="tag">Hardware Repair</span>
+              <span class="tag">.NET Core</span>
+              <span class="tag">Angular</span>
+              <span class="tag">SQL Server</span>
+              <span class="tag">PostgreSQL</span>
+              <span class="tag">Supabase</span>
+              <span class="tag">Power Automate</span>
+              <span class="tag">n8n Automation</span>
+              <span class="tag">Git/GitHub</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Experience 2: RFID Company -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="glass-card">
+            <div class="exp-card-header">
+              <div>
+                <div class="exp-role-title">Full Stack Web Developer (.NET & Angular)</div>
+                <div class="exp-company"><i class="fa-solid fa-network-wired"></i> RFID Company</div>
+              </div>
+              <span class="exp-period">2024 – 2025</span>
+            </div>
+
+            <ul class="exp-bullets">
+              <li>Developed enterprise web applications using .NET Core, ASP.NET MVC, Angular, C#, and SQL Server.</li>
+              <li>Designed REST APIs and supported application troubleshooting and deployment.</li>
+            </ul>
+
+            <div class="tech-tags">
+              <span class="tag">C#</span>
+              <span class="tag">.NET Core</span>
+              <span class="tag">ASP.NET MVC</span>
+              <span class="tag">Angular</span>
+              <span class="tag">REST APIs</span>
+              <span class="tag">SQL Server</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Technical & Soft Skills Section -->
+    <section class="section" id="skills">
+      <div class="section-header">
+        <div class="section-tag">Competencies & Tools</div>
+        <h2 class="section-title">Technical & Soft Skills</h2>
+      </div>
+
+      <div class="skills-filter">
+        <button class="filter-btn active" data-filter="all">All Skills</button>
+        <button class="filter-btn" data-filter="it">IT Support & Hardware</button>
+        <button class="filter-btn" data-filter="network">Networking & Security</button>
+        <button class="filter-btn" data-filter="dev">Development & DBs</button>
+        <button class="filter-btn" data-filter="auto">Automation</button>
+        <button class="filter-btn" data-filter="soft">Soft Skills</button>
+      </div>
+
+      <div class="skills-grid">
+        <!-- IT Support & Hardware -->
+        <div class="skill-card" data-category="it">
+          <div class="skill-icon-box"><i class="fa-solid fa-wrench"></i></div>
+          <div class="skill-info">
+            <div class="skill-name">IT Support & Hardware</div>
+            <div class="skill-category-label">PC, Laptop, Printer Repair</div>
+          </div>
+        </div>
+
+        <div class="skill-card" data-category="it">
+          <div class="skill-icon-box"><i class="fa-brands fa-windows"></i></div>
+          <div class="skill-info">
+            <div class="skill-name">Windows Admin</div>
+            <div class="skill-category-label">Installation & Maintenance</div>
+          </div>
+        </div>
+
+        <div class="skill-card" data-category="it">
+          <div class="skill-icon-box"><i class="fa-solid fa-print"></i></div>
+          <div class="skill-info">
+            <div class="skill-name">Printer & Scanner Maintenance</div>
+            <div class="skill-category-label">Hardware & Driver Config</div>
+          </div>
+        </div>
+
+        <div class="skill-card" data-category="it">
+          <div class="skill-icon-box"><i class="fa-solid fa-file-word"></i></div>
+          <div class="skill-info">
+            <div class="skill-name">Microsoft Office Suite</div>
+            <div class="skill-category-label">Enterprise User Support</div>
+          </div>
+        </div>
+
+        <!-- Networking & Security -->
+        <div class="skill-card" data-category="network">
+          <div class="skill-icon-box"><i class="fa-solid fa-network-wired"></i></div>
+          <div class="skill-info">
+            <div class="skill-name">TCP/IP Networking</div>
+            <div class="skill-category-label">Subnetting & Connectivity</div>
+          </div>
+        </div>
+
+        <div class="skill-card" data-category="network">
+          <div class="skill-icon-box"><i class="fa-solid fa-sitemap"></i></div>
+          <div class="skill-info">
+            <div class="skill-name">IP Address Management</div>
+            <div class="skill-category-label">DHCP, MAC & Endpoints</div>
+          </div>
+        </div>
+
+        <div class="skill-card" data-category="network">
+          <div class="skill-icon-box"><i class="fa-solid fa-shield-halved"></i></div>
+          <div class="skill-info">
+            <div class="skill-name">Sophos Firewall</div>
+            <div class="skill-category-label">Network Rules & Security</div>
+          </div>
+        </div>
+
+        <div class="skill-card" data-category="network">
+          <div class="skill-icon-box"><i class="fa-solid fa-user-shield"></i></div>
+          <div class="skill-info">
+            <div class="skill-name">Endpoint Security</div>
+            <div class="skill-category-label">Antivirus & Policy Enforcement</div>
+          </div>
+        </div>
+
+        <!-- Development & DBs -->
+        <div class="skill-card" data-category="dev">
+          <div class="skill-icon-box"><i class="fa-solid fa-code"></i></div>
+          <div class="skill-info">
+            <div class="skill-name">C# & .NET Core</div>
+            <div class="skill-category-label">ASP.NET MVC & REST APIs</div>
+          </div>
+        </div>
+
+        <div class="skill-card" data-category="dev">
+          <div class="skill-icon-box"><i class="fa-brands fa-angular"></i></div>
+          <div class="skill-info">
+            <div class="skill-name">Angular</div>
+            <div class="skill-category-label">Single Page Applications</div>
+          </div>
+        </div>
+
+        <div class="skill-card" data-category="dev">
+          <div class="skill-icon-box"><i class="fa-solid fa-database"></i></div>
+          <div class="skill-info">
+            <div class="skill-name">SQL Server & PostgreSQL</div>
+            <div class="skill-category-label">Relational Database Mgmt</div>
+          </div>
+        </div>
+
+        <div class="skill-card" data-category="dev">
+          <div class="skill-icon-box"><i class="fa-solid fa-bolt"></i></div>
+          <div class="skill-info">
+            <div class="skill-name">Supabase</div>
+            <div class="skill-category-label">Cloud Backend & Auth</div>
+          </div>
+        </div>
+
+        <div class="skill-card" data-category="dev">
+          <div class="skill-icon-box"><i class="fa-brands fa-git-alt"></i></div>
+          <div class="skill-info">
+            <div class="skill-name">Git / GitHub</div>
+            <div class="skill-category-label">Source & Version Control</div>
+          </div>
+        </div>
+
+        <!-- Automation -->
+        <div class="skill-card" data-category="auto">
+          <div class="skill-icon-box"><i class="fa-solid fa-gears"></i></div>
+          <div class="skill-info">
+            <div class="skill-name">Microsoft Power Automate</div>
+            <div class="skill-category-label">Flows & Business Automations</div>
+          </div>
+        </div>
+
+        <div class="skill-card" data-category="auto">
+          <div class="skill-icon-box"><i class="fa-solid fa-diagram-project"></i></div>
+          <div class="skill-info">
+            <div class="skill-name">n8n Automation</div>
+            <div class="skill-category-label">Workflow Automation Engine</div>
+          </div>
+        </div>
+
+        <!-- Soft Skills -->
+        <div class="skill-card" data-category="soft">
+          <div class="skill-icon-box"><i class="fa-solid fa-lightbulb"></i></div>
+          <div class="skill-info">
+            <div class="skill-name">Problem Solving</div>
+            <div class="skill-category-label">Root Cause Analysis</div>
+          </div>
+        </div>
+
+        <div class="skill-card" data-category="soft">
+          <div class="skill-icon-box"><i class="fa-solid fa-headset"></i></div>
+          <div class="skill-info">
+            <div class="skill-name">Customer & Employee Support</div>
+            <div class="skill-category-label">Service Desk Excellence</div>
+          </div>
+        </div>
+
+        <div class="skill-card" data-category="soft">
+          <div class="skill-icon-box"><i class="fa-solid fa-people-group"></i></div>
+          <div class="skill-info">
+            <div class="skill-name">Team Collaboration & Adaptability</div>
+            <div class="skill-category-label">Agile & Responsive Teamwork</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Automation & Specializations Spotlight -->
+    <section class="section" id="spotlight">
+      <div class="section-header">
+        <div class="section-tag">Key Highlights</div>
+        <h2 class="section-title">Automation & Specializations Spotlight</h2>
+      </div>
+
+      <div class="spotlight-grid">
+        <!-- Card 1 -->
+        <div class="glass-card spotlight-card">
+          <div>
+            <div class="spotlight-icon"><i class="fa-solid fa-paper-plane"></i></div>
+            <h3>Automated Payroll Email Distribution</h3>
+            <p>Designed and deployed seamless automated payroll email workflows using <strong>n8n</strong> and
+              <strong>Microsoft Power Automate</strong> at Kazareen Textile Company, streamlining monthly HR email
+              dispatches with zero manual intervention.
+            </p>
+          </div>
+          <div class="tech-tags">
+            <span class="tag">n8n Engine</span>
+            <span class="tag">Power Automate</span>
+            <span class="tag">SMTP</span>
+            <span class="tag">KTC HR</span>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="glass-card spotlight-card">
+          <div>
+            <div class="spotlight-icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <h3>Sophos Firewall & Endpoint Administration</h3>
+            <p>Managed network perimeter security, IP address assignments, MAC filtering, and endpoint protection
+              policies across multi-departmental corporate networks to prevent unauthorized access and safeguard
+              business assets.</p>
+          </div>
+          <div class="tech-tags">
+            <span class="tag">Sophos Firewall</span>
+            <span class="tag">Endpoint Defense</span>
+            <span class="tag">IP & MAC Rules</span>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="glass-card spotlight-card">
+          <div>
+            <div class="spotlight-icon"><i class="fa-solid fa-cubes"></i></div>
+            <h3>Enterprise Full Stack (.NET & Angular)</h3>
+            <p>Engineered internal enterprise web systems and RESTful APIs utilizing <strong>.NET Core</strong>,
+              <strong>ASP.NET MVC</strong>, <strong>Angular</strong>, and <strong>SQL Server / PostgreSQL /
+                Supabase</strong> backends for data-driven operations.
+            </p>
+          </div>
+          <div class="tech-tags">
+            <span class="tag">.NET Core</span>
+            <span class="tag">Angular</span>
+            <span class="tag">REST APIs</span>
+            <span class="tag">PostgreSQL</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive CLI Terminal Section -->
+    <section class="section" id="terminal">
+      <div class="section-header">
+        <div class="section-tag">Interactive Feature</div>
+        <h2 class="section-title">CLI Terminal Inspection</h2>
+      </div>
+
+      <div class="terminal-card">
+        <div class="terminal-header">
+          <div class="terminal-dots">
+            <div class="dot dot-red"></div>
+            <div class="dot dot-yellow"></div>
+            <div class="dot dot-green"></div>
+          </div>
+          <div class="terminal-title">alkhadraa@ktc-net:~ (bash)</div>
+          <div style="font-size: 11px; color: var(--text-subtle);">v2.4.0</div>
+        </div>
+
+        <div class="terminal-body" id="termOutput">
+          <div class="terminal-line">
+            Welcome to <strong style="color: var(--accent-cyan);">Muhammad Wael AlKhadraa</strong> Terminal Session.
+          </div>
+          <div class="terminal-line" style="color: var(--text-muted); margin-bottom: 12px;">
+            Type <strong style="color: var(--accent-emerald);">help</strong> or click any suggestion below to query
+            profile data.
+          </div>
+        </div>
+
+        <div class="term-suggestions">
+          <button class="term-btn" data-cmd="summary">summary</button>
+          <button class="term-btn" data-cmd="skills">skills</button>
+          <button class="term-btn" data-cmd="experience">experience</button>
+          <button class="term-btn" data-cmd="ktc">ktc</button>
+          <button class="term-btn" data-cmd="rfid">rfid</button>
+          <button class="term-btn" data-cmd="education">education</button>
+          <button class="term-btn" data-cmd="contact">contact</button>
+          <button class="term-btn" data-cmd="clear">clear</button>
+        </div>
+
+        <div style="padding: 12px 24px; border-top: 1px solid var(--border-subtle); background: #0b0c12;">
+          <div class="term-input-line">
+            <span class="term-prompt">alkhadraa@ktc-net</span>:<span class="term-path">~</span>$&nbsp;
+            <input type="text" class="term-input" id="termInput"
+              placeholder="type a command (e.g. skills) and press Enter..." autocomplete="off">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="section" id="education">
+      <div class="section-header">
+        <div class="section-tag">Academic Background</div>
+        <h2 class="section-title">Education</h2>
+      </div>
+
+      <div class="edu-grid">
+        <div class="glass-card edu-card">
+          <div class="edu-icon-bg"><i class="fa-solid fa-graduation-cap"></i></div>
+          <div style="flex-grow: 1;">
+            <div style="font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 4px;">Sadat Academy for
+              Management Sciences</div>
+            <div style="font-size: 16px; color: var(--accent-cyan); font-weight: 600; margin-bottom: 6px;">Bachelor of
+              Science in Computer Science</div>
+            <div style="font-size: 14px; color: var(--text-muted);"><i class="fa-regular fa-calendar"></i> Graduated:
+              2020 – 2024</div>
+          </div>
+          <div
+            style="padding: 8px 16px; background: rgba(56, 189, 248, 0.1); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: var(--radius-md); font-size: 13px; color: var(--accent-cyan); font-weight: 600;">
+            B.S. CS Degree
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+      <div class="section-header">
+        <div class="section-tag">Get In Touch</div>
+        <h2 class="section-title">Contact Information</h2>
+      </div>
+
+      <div class="contact-wrapper">
+        <div class="contact-card-box">
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+            <div>
+              <div style="font-size: 12px; color: var(--text-subtle);">Phone Number</div>
+              <div style="font-size: 16px; font-weight: 600; color: #fff;">01005421228</div>
+            </div>
+            <button class="copy-btn" onclick="copyText('01005421228', 'Phone number')">Copy</button>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+            <div>
+              <div style="font-size: 12px; color: var(--text-subtle);">Email Address</div>
+              <div style="font-size: 16px; font-weight: 600; color: #fff;">alkhadraam@gmail.com</div>
+            </div>
+            <button class="copy-btn" onclick="copyText('alkhadraam@gmail.com', 'Email address')">Copy</button>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fa-solid fa-briefcase"></i></div>
+            <div>
+              <div style="font-size: 12px; color: var(--text-subtle);">Target Roles</div>
+              <div style="font-size: 15px; font-weight: 600; color: var(--accent-cyan);">IT Specialist | IT Support
+                Engineer | .NET Developer</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Email Action Card -->
+        <div class="glass-card"
+          style="display: flex; flex-direction: column; justify-content: center; text-align: center; gap: 16px;">
+          <h3 style="font-size: 24px; font-weight: 700;">Ready to Collaborate?</h3>
+          <p style="color: var(--text-muted); font-size: 14px; line-height: 1.6;">
+            Whether you need enterprise IT infrastructure management, endpoint & firewall support, automated workflows,
+            or custom .NET & Angular web application development, feel free to reach out directly.
+          </p>
+          <div style="display: flex; justify-content: center; gap: 12px; margin-top: 8px;">
+            <a href="mailto:alkhadraam@gmail.com" class="btn-primary" style="padding: 12px 28px; font-size: 14px;">
+              <i class="fa-solid fa-paper-plane"></i> Send Email
+            </a>
+            <a href="tel:01005421228" class="btn-secondary" style="padding: 12px 24px; font-size: 14px;">
+              <i class="fa-solid fa-phone"></i> Call Now
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div>&copy; 2026 <strong>Muhammad Wael AlKhadraa</strong>. All rights reserved.</div>
+    <div style="font-size: 12px; color: var(--text-subtle); margin-top: 6px;">IT Specialist &bull; IT Support Engineer
+      &bull; .NET Developer</div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="frames.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>

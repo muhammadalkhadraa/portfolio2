@@ -359,6 +359,31 @@
 
   sections.forEach(sec => observer.observe(sec));
 
-  // Initialize frame loader
-  initFrames();
+  // ── Lazy-load frames.js AFTER page is visible ──────────────────────────
+  // The loading screen is already shown, so the user sees something instantly.
+  // frames.js (3.7 MB) is fetched in the background; once ready, initFrames() runs.
+  function loadFramesScript() {
+    const script = document.createElement('script');
+    script.src = 'frames.js';
+    script.async = true;
+
+    script.onload = () => {
+      initFrames(); // FRAMES array is now available
+    };
+
+    script.onerror = () => {
+      console.warn('frames.js failed to load — skipping intro animation.');
+      skipIntroAnimation();
+    };
+
+    document.head.appendChild(script);
+  }
+
+  // Kick off lazy load once the browser has painted the initial frame
+  if (document.readyState === 'complete') {
+    loadFramesScript();
+  } else {
+    window.addEventListener('load', loadFramesScript);
+  }
 })();
+

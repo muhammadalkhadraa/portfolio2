@@ -212,36 +212,85 @@
     });
   }
 
-  // Close nav on click
+  // Close nav on click & immediate active state
   document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => {
+    link.addEventListener('click', function () {
       if (navLinksList) navLinksList.classList.remove('open');
+      navLinks.forEach(l => l.classList.remove('active'));
+      this.classList.add('active');
     });
   });
 
-  // 5. Scroll Spy for Active Nav Links
+  // 5. Scroll Spy for Active Nav Links (Using getBoundingClientRect for viewport accuracy)
   const sections = document.querySelectorAll('.section');
   const navLinks = document.querySelectorAll('.nav-link');
 
-  window.addEventListener('scroll', () => {
+  function updateActiveNav() {
     let current = '';
-    sections.forEach(sec => {
-      const top = sec.offsetTop - 150;
-      const height = sec.offsetHeight;
-      if (window.scrollY >= top && window.scrollY < top + height) {
-        current = sec.getAttribute('id');
+    const triggerOffset = 220; // 220px below viewport top (accounts for navbar)
+
+    // Check if scrolled near the bottom of document
+    const isAtBottom = (window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 70);
+
+    if (isAtBottom) {
+      current = 'contact';
+    } else {
+      sections.forEach(sec => {
+        const rect = sec.getBoundingClientRect();
+        // Section is active if it spans across the trigger offset line
+        if (rect.top <= triggerOffset && rect.bottom > triggerOffset) {
+          current = sec.getAttribute('id');
+        }
+      });
+
+      // Fallback: If at the top of content before passing triggerOffset
+      if (!current && sections.length > 0) {
+        const firstRect = sections[0].getBoundingClientRect();
+        if (firstRect.top > 0 && firstRect.top < window.innerHeight) {
+          current = sections[0].getAttribute('id');
+        }
       }
-    });
+    }
 
     navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === `#${current}`) {
+      const href = link.getAttribute('href');
+      if (current && href === `#${current}`) {
         link.classList.add('active');
+      } else {
+        link.classList.remove('active');
       }
+    });
+  }
+
+  window.addEventListener('scroll', updateActiveNav, { passive: true });
+  window.addEventListener('resize', updateActiveNav);
+  updateActiveNav();
+
+  // 6. Project Category Filter
+  const projectFilterBtns = document.querySelectorAll('.project-filter-btn');
+  const projectCards = document.querySelectorAll('.project-card');
+
+  projectFilterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      projectFilterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const cat = btn.getAttribute('data-filter');
+
+      projectCards.forEach(card => {
+        const categories = (card.getAttribute('data-category') || '').split(' ');
+        if (cat === 'all' || categories.includes(cat)) {
+          card.style.display = 'flex';
+          card.style.opacity = '1';
+        } else {
+          card.style.display = 'none';
+          card.style.opacity = '0';
+        }
+      });
     });
   });
 
-  // 6. Skills Category Filter
+  // 7. Skills Category Filter
   const filterBtns = document.querySelectorAll('.filter-btn');
   const skillCards = document.querySelectorAll('.skill-card');
 
@@ -264,20 +313,44 @@
     });
   });
 
-  // 7. Interactive CLI Terminal
+  // 8. Interactive CLI Terminal
   const termOutput = document.getElementById('termOutput');
   const termInput = document.getElementById('termInput');
   const termBtns = document.querySelectorAll('.term-btn');
 
   const COMMANDS = {
-    help: 'Available commands: <strong>summary</strong>, <strong>skills</strong>, <strong>experience</strong>, <strong>ktc</strong>, <strong>rfid</strong>, <strong>education</strong>, <strong>contact</strong>, <strong>clear</strong>',
+    help: 'Available commands: <strong>summary</strong>, <strong>projects</strong>, <strong>skills</strong>, <strong>experience</strong>, <strong>ktc</strong>, <strong>rfid</strong>, <strong>education</strong>, <strong>contact</strong>, <strong>clear</strong>',
     summary: '<strong>Muhammad Wael AlKhadraa</strong> - IT Specialist | Support Engineer | .NET Developer.<br>Experienced in enterprise IT support, Windows admin, hardware/network troubleshooting, Sophos firewall, and full-stack web dev (.NET/Angular).',
+    projects: '<div class="term-section-title">🚀 Featured Engineering & Enterprise Projects</div>' +
+      '<div class="term-project-block">' +
+        '<div class="term-project-head"><span class="term-dot"></span><strong>IT Incident Copilot</strong> <span class="term-tag">AI Service Desk</span></div>' +
+        '<div class="term-project-desc">Autonomous Telemetry Diagnostics & Automated Remediation Engine (React 18, ASP.NET Core 9, pgvector)</div>' +
+        '<div class="term-project-links"><a href="https://it-incident-copilot.vercel.app" target="_blank">🌐 Live Demo</a> &bull; <a href="https://github.com/muhammadalkhadraa/IT-Incident-Copilot" target="_blank">🐙 GitHub Repo</a></div>' +
+      '</div>' +
+      '<div class="term-divider"></div>' +
+      '<div class="term-project-block">' +
+        '<div class="term-project-head"><span class="term-dot dot-purple"></span><strong>RFID + Barcode Textile Tracker</strong> <span class="term-tag tag-purple">.NET 8 Clean Architecture</span></div>' +
+        '<div class="term-project-desc">High-Throughput Production-Grade Manufacturing Architecture (C#, EF Core, SQL Server, Impinj RFID SDK)</div>' +
+        '<div class="term-project-links"><a href="https://github.com/muhammadalkhadraa/rfid-tracker" target="_blank">🐙 GitHub Solution</a></div>' +
+      '</div>' +
+      '<div class="term-divider"></div>' +
+      '<div class="term-project-block">' +
+        '<div class="term-project-head"><span class="term-dot dot-emerald"></span><strong>KTC Vacations & HR Portal</strong> <span class="term-tag tag-emerald">Corporate HR Portal</span></div>' +
+        '<div class="term-project-desc">Corporate Leave Management & Employee Self-Service Platform (Angular 17, Ionic, Supabase PostgreSQL, i18n)</div>' +
+        '<div class="term-project-links"><a href="https://ktc-vacations.vercel.app" target="_blank">🌐 Live Demo</a> &bull; <a href="https://github.com/muhammadalkhadraa/KTC-VACATIONS" target="_blank">🐙 GitHub Repo</a></div>' +
+      '</div>' +
+      '<div class="term-divider"></div>' +
+      '<div class="term-project-block">' +
+        '<div class="term-project-head"><span class="term-dot dot-rose"></span><strong>Togetheer</strong> <span class="term-tag tag-rose">WebRTC & Multimedia</span></div>' +
+        '<div class="term-project-desc">A Little Closer, Wherever You Are — Private Room for Friends (WebRTC, Watch Party, 100-Piece Bézier Puzzle)</div>' +
+        '<div class="term-project-links"><a href="https://togetheer.vercel.app" target="_blank">🌐 Live Demo</a> &bull; <a href="https://github.com/muhammadalkhadraa/togetheer" target="_blank">🐙 GitHub Repo</a></div>' +
+      '</div>',
     skills: '<strong>Core Technical Stack:</strong><br>• IT Support, Windows Admin, Printer/Scanner, TCP/IP, IP Address Mgmt, Sophos Firewall<br>• C#, .NET Core, ASP.NET MVC, Angular, SQL Server, PostgreSQL, Supabase<br>• Git/GitHub, Microsoft Power Automate, n8n Automation',
     experience: '<strong>Work Experience:</strong><br>1. Kazareen Textile Company (KTC) - IT Specialist & Web Developer (2025–Present)<br>2. RFID Company - Full Stack Web Developer (2024–2025)',
     ktc: '<strong>Kazareen Textile Company (KTC):</strong><br>Daily employee IT support, hardware repair, network/Sophos firewall mgmt, .NET/Angular app dev, n8n/Power Automate payroll email automation workflows.',
     rfid: '<strong>RFID Company:</strong><br>Developed enterprise web apps with .NET Core, ASP.NET MVC, Angular, C#, and SQL Server. Designed REST APIs.',
     education: '<strong>Education:</strong><br>Sadat Academy for Management Sciences - Bachelor of Science in Computer Science (2020 – 2024)',
-    contact: '<strong>Contact Information:</strong><br>📞 Phone: 01005421228<br>✉️ Email: alkhadraam@gmail.com'
+    contact: '<strong>Contact Information & Socials:</strong><br>💼 LinkedIn: <a href="https://www.linkedin.com/in/muhammad-alkhadraa" target="_blank" style="color:var(--accent-cyan); text-decoration:underline;">linkedin.com/in/muhammad-alkhadraa</a><br>🐙 GitHub: <a href="https://github.com/muhammadalkhadraa" target="_blank" style="color:var(--accent-cyan); text-decoration:underline;">github.com/muhammadalkhadraa</a><br>📞 Phone: 01005421228<br>✉️ Email: alkhadraam@gmail.com'
   };
 
   function handleCommand(cmd) {

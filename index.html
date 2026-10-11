@@ -21,7 +21,7 @@
   <meta name="twitter:title" content="Muhammad Wael AlKhadraa | IT Specialist & .NET Developer">
   <meta name="twitter:description" content="Enterprise IT Specialist & .NET Developer. Explore production-grade .NET, Angular, and AI projects.">
 
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=3">
   <!-- FontAwesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -38,6 +38,12 @@
   <!-- Scroll-Driven Laptop Animation Intro Stage (Clean, no text overlay) -->
   <div class="scroll-track" id="scrollTrack">
     <div class="sticky-stage" id="stage">
+      <!-- Skip Intro Button -->
+      <button class="skip-intro-btn" id="skipIntroBtn" aria-label="Skip intro animation and jump to content">
+        <span>Skip Intro</span>
+        <i class="fa-solid fa-angles-down"></i>
+      </button>
+
       <canvas id="canvas" width="1920" height="1080"></canvas>
 
       <!-- Scroll Hint -->
@@ -78,8 +84,25 @@
       <li><a href="#terminal" class="nav-link">CLI Terminal</a></li>
       <li><a href="#education" class="nav-link">Education</a></li>
       <li><a href="#contact" class="nav-link">Contact</a></li>
+      
+      <!-- Integrated Mobile Action Links (Ensures 100% desktop parity on mobile) -->
+      <li class="mobile-nav-actions">
+        <div class="mobile-actions-label">Connect & Reach Out</div>
+        <div class="mobile-actions-grid">
+          <a href="https://github.com/muhammadalkhadraa" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/muhammad-alkhadraa" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+            <i class="fa-brands fa-linkedin" style="color: #0ea5e9;"></i> LinkedIn
+          </a>
+          <a href="mailto:alkhadraam@gmail.com" class="btn-primary">
+            <i class="fa-solid fa-envelope"></i> Contact Me
+          </a>
+        </div>
+      </li>
     </ul>
 
+    <!-- Desktop Nav Action Buttons -->
     <div class="nav-actions">
       <a href="https://github.com/muhammadalkhadraa" target="_blank" rel="noopener noreferrer" class="btn-secondary" title="GitHub Profile">
         <i class="fa-brands fa-github"></i> GitHub
@@ -88,11 +111,12 @@
         <i class="fa-brands fa-linkedin" style="color: #0ea5e9;"></i> LinkedIn
       </a>
       <a href="mailto:alkhadraam@gmail.com" class="btn-primary">
-        <i class="fa-solid fa-paper-plane"></i> Contact Me
+        <i class="fa-solid fa-envelope"></i> Contact Me
       </a>
     </div>
 
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+    <!-- Mobile Header Toggle (Right side) -->
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
       <i class="fa-solid fa-bars"></i>
     </button>
   </nav>
@@ -147,6 +171,18 @@
             <i class="fa-solid fa-location-dot" style="color: var(--accent-emerald);"></i> Cairo, Egypt
           </div>
         </div>
+
+        <!-- Quick Section Navigation Bar (Direct 1-tap Jump for Mobile & Desktop) -->
+        <nav class="quick-nav-strip" id="quickNavStrip" aria-label="Quick Section Navigation">
+          <a href="#about" class="quick-nav-chip"><i class="fa-solid fa-user"></i> About</a>
+          <a href="#experience" class="quick-nav-chip"><i class="fa-solid fa-briefcase"></i> Experience</a>
+          <a href="#projects" class="quick-nav-chip"><i class="fa-solid fa-layer-group"></i> Projects</a>
+          <a href="#skills" class="quick-nav-chip"><i class="fa-solid fa-code"></i> Skills</a>
+          <a href="#spotlight" class="quick-nav-chip"><i class="fa-solid fa-bolt"></i> Automations</a>
+          <a href="#terminal" class="quick-nav-chip"><i class="fa-solid fa-terminal"></i> Terminal</a>
+          <a href="#education" class="quick-nav-chip"><i class="fa-solid fa-graduation-cap"></i> Education</a>
+          <a href="#contact" class="quick-nav-chip"><i class="fa-solid fa-envelope"></i> Contact</a>
+        </nav>
       </div>
     </section>
 
@@ -826,7 +862,7 @@
         <!-- Card 1 -->
         <div class="glass-card spotlight-card">
           <div>
-            <div class="spotlight-icon"><i class="fa-solid fa-paper-plane"></i></div>
+            <div class="spotlight-icon"><i class="fa-solid fa-envelope-open-text"></i></div>
             <h3>Automated Payroll Email Distribution</h3>
             <p>Designed and deployed seamless automated payroll email workflows using <strong>n8n</strong> and
               <strong>Microsoft Power Automate</strong> at Kazareen Textile Company, streamlining monthly HR email
@@ -1023,7 +1059,7 @@
               <i class="fa-brands fa-linkedin"></i> Connect on LinkedIn
             </a>
             <a href="mailto:alkhadraam@gmail.com" class="btn-secondary" style="padding: 12px 22px; font-size: 14px;">
-              <i class="fa-solid fa-paper-plane"></i> Send Email
+              <i class="fa-solid fa-envelope"></i> Send Email
             </a>
             <a href="tel:01005421228" class="btn-secondary" style="padding: 12px 20px; font-size: 14px;">
               <i class="fa-solid fa-phone"></i> Call Now
@@ -1058,7 +1094,7 @@
 
   <!-- Scripts -->
   <!-- frames.js is loaded dynamically by app.js to prevent blocking page render -->
-  <script src="app.js"></script>
+  <script src="app.js?v=2"></script>
 </body>
 
 </html>

@@ -18,6 +18,7 @@
   const navbar = document.getElementById('navbar');
   const navToggle = document.getElementById('navToggle');
   const navLinksList = document.getElementById('navLinks');
+  const skipIntroBtn = document.getElementById('skipIntroBtn');
 
   // Animation State
   const images = [];
@@ -36,6 +37,21 @@
     if (scrollTrack) scrollTrack.style.display = 'none';
     if (bgVideoContainer) bgVideoContainer.classList.add('active');
     if (navbar) navbar.classList.add('visible');
+  }
+
+  // Handle Skip Intro button click to jump smoothly to portfolio content
+  if (skipIntroBtn) {
+    skipIntroBtn.addEventListener('click', () => {
+      const hero = document.getElementById('hero-header');
+      if (hero) {
+        hero.scrollIntoView({ behavior: 'smooth' });
+      } else if (scrollTrack) {
+        window.scrollTo({ top: scrollTrack.offsetHeight, behavior: 'smooth' });
+      }
+      if (bgVideoContainer) bgVideoContainer.classList.add('active');
+      if (bgVideo && (bgVideo.paused || bgVideo.ended)) bgVideo.play().catch(() => {});
+      if (navbar) navbar.classList.add('visible');
+    });
   }
 
   // Failsafe: if loading takes more than 12 seconds, skip animation
@@ -205,25 +221,60 @@
 
   window.addEventListener('resize', updateScroll);
 
-  // 4. Mobile Navigation Toggle
+  // 4. Mobile Navigation Toggle & Drawer Management
+  function closeMobileNav() {
+    if (navLinksList && navLinksList.classList.contains('open')) {
+      navLinksList.classList.remove('open');
+      if (navToggle) {
+        navToggle.setAttribute('aria-expanded', 'false');
+        const icon = navToggle.querySelector('i');
+        if (icon) icon.className = 'fa-solid fa-bars';
+      }
+      document.body.style.overflow = '';
+    }
+  }
+
   if (navToggle && navLinksList) {
     navToggle.addEventListener('click', () => {
-      navLinksList.classList.toggle('open');
+      const isOpen = navLinksList.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      const icon = navToggle.querySelector('i');
+      if (icon) {
+        icon.className = isOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
+      }
+      document.body.style.overflow = isOpen ? 'hidden' : '';
     });
   }
 
   // Close nav on click & immediate active state
-  document.querySelectorAll('.nav-link').forEach(link => {
+  document.querySelectorAll('.nav-link, .mobile-nav-actions a').forEach(link => {
     link.addEventListener('click', function () {
-      if (navLinksList) navLinksList.classList.remove('open');
+      closeMobileNav();
       navLinks.forEach(l => l.classList.remove('active'));
-      this.classList.add('active');
+      if (this.classList.contains('nav-link')) {
+        this.classList.add('active');
+      }
     });
   });
 
-  // 5. Scroll Spy for Active Nav Links (Using getBoundingClientRect for viewport accuracy)
+  // Close mobile nav when viewport expands to desktop
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+      closeMobileNav();
+    }
+  });
+
+  // 5. Scroll Spy for Active Nav Links & Quick Nav Strip Chips
   const sections = document.querySelectorAll('.section');
   const navLinks = document.querySelectorAll('.nav-link');
+  const quickNavChips = document.querySelectorAll('.quick-nav-chip');
+
+  quickNavChips.forEach(chip => {
+    chip.addEventListener('click', function () {
+      quickNavChips.forEach(c => c.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
 
   function updateActiveNav() {
     let current = '';
@@ -258,6 +309,15 @@
         link.classList.add('active');
       } else {
         link.classList.remove('active');
+      }
+    });
+
+    quickNavChips.forEach(chip => {
+      const href = chip.getAttribute('href');
+      if (current && href === `#${current}`) {
+        chip.classList.add('active');
+      } else {
+        chip.classList.remove('active');
       }
     });
   }
